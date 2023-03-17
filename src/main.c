@@ -55,9 +55,6 @@ void main(void)
 			printk("Could not read (%d)\n", err);
 			continue;
 		} 
-		else {
-			printk("sample buffer = %d\n", sample_buffer);
-		}
 
 
 
@@ -70,11 +67,13 @@ void main(void)
 
 		err = adc_raw_to_millivolts(adc_vref, ADC_GAIN, ADC_RESOLUTION, &val_mv);
 		if (err < 0) {
-				printk(" (value in mV not available)\n");
-			} else {
-				printk("ADC voltage = %d mV\n", val_mv);
-			}
+			printk(" (value in mV not available)\n");
+		} 
+		else{
+			printk("ADC voltage = %d mV\n", val_mv);
 		}
-
-		k_sleep(K_MSEC(10000));
+		
+		k_sleep(K_SECONDS(5U));
+	}
+	
 }
